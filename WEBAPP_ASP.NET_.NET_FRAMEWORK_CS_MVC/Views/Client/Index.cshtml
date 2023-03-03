@@ -1,0 +1,257 @@
+﻿
+@model WEBAPP_ASP.NET_.NET_FRAMEWORK_CS_MVC.Models.ClientModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
+    var userInfoJson = (ViewBag.JsonString);
+}
+
+@section link_style
+{
+    <link href="../../Styles/StyleSheet2.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="container-fluid">
+        <h1 class="text-center font p-2" style="margin:auto;">Fiche Client</h1>
+
+    </div>
+    @*<form class="mb-3">*@
+    @using (Html.BeginForm(""))
+    {
+        <div class="card p-3" style=" margin: 20px 10px;">
+            <h4 class="ml-3">Coordonnées principales</h4>
+            <div class="card-body" style="display: flex; ">
+                <div style="width: 50%;">
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.CODECLIENT, "Code Abonne", new { @id = "CodeClient" })
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.CODECLIENT, new { @class = "form-control" })
+                            <input class="btn btn-outline-secondary" type="submit" value="Recherche" name="action:Recherche" />
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%;">
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.NOM, "Raison Sociale", new { @id = "RaisonSociale" })
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.NOM, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin: 20px 10px;">
+
+            <div class="card-body" style="display: flex;">
+
+                <div style="width: 50%;">
+                    <h4 style="margin: 46px 10px;">Adresse principale</h4>
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.ADRESSE1, "Adresse 1")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.ADRESSE1, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.ADRESSE2, "Adresse 2")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.ADRESSE2, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.ADRESSE3, "Adresse 3")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.ADRESSE3, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.CP, "Code Postale")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.CP, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 50%;">
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.VILLE, "Ville")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.VILLE, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.PAYS, "Pays")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.PAYS, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.TEL, "Téléphone")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.TEL, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.FAX, "Fax")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.FAX, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin: 20px 10px;">
+                        @Html.LabelFor(o => o.EMAIL, "E-mail")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.EMAIL, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="card " style="width: 50%;  margin: 20px 10px;">
+                <div class="card-body">
+                    <h4>TVA</h4>
+                    @Html.LabelFor(o => o.TVAINTRA, "N° de TVA intracommunautaire")
+                    <div class="input-group">
+                        @Html.EditorFor(o => o.TVAINTRA, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.EXPTYPENONSOUMISTVA, "Régime TVA")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.EXPTYPENONSOUMISTVA, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card " style="width: 50%;  margin: 20px 10px;">
+                <div class="card-body">
+                    <h4>Comptabilité</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.COMPCOMPTABLE, "N° de compte comptable")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.COMPCOMPTABLE, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card " style="width: 50%;  margin: 20px 10px;">
+                <div class="card-body">
+                    <h4>Autres informations</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.STATUT, "Statut")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.STATUT, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.TYPESOCIETE, "Famille")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.TYPESOCIETE, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.CODEAPE, "Code APE")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.CODEAPE, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.NUMEROSIRET, "N° de Siret")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.NUMEROSIRET, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(o => o.WEB, "Adresse web")
+                        <div class="input-group">
+                            @Html.EditorFor(o => o.WEB, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Supprimer" name="action:Delete" />
+        @*<button class="mx-3 btn btn-primary" href="#1">Supprimer</button>*@
+        <button class="mx-3 btn btn-primary" href="#2">Modifier</button>
+        @*</form>*@
+    }
+
+    <div class="card p-3" style=" margin: 20px 10px;">
+        <div>
+            <h4>Gestion des contacts et autres adresses chez le client</h4>
+        </div>
+
+        <div class="card-body" style="display: flex; ">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Civilité</th>
+                        <th scope="col">Fonction</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Adresse e-mail</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Tél. mobile</th>
+                        <th scope="col">Fax</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="@userInfoJson" id="jsonString" />
+@section script
+{
+    var jsonString = $('#jsonString').val();
+
+    if (jsonString != "") { 
+        var json = JSON.parse(jsonString)
+
+        $('#NOM').val(json.FB_Clients[0].Nom)
+
+        $('#ADRESSE1').val(json.FB_Clients[0].Adresse1)
+        $('#ADRESSE2').val(json.FB_Clients[0].Adresse2)
+        $('#ADRESSE3').val(json.FB_Clients[0].Adresse3)
+
+        $('#CP').val(json.FB_Clients[0].CP)
+        $('#VILLE').val(json.FB_Clients[0].Ville)
+        $('#PAYS').val(json.FB_Clients[0].Pays)
+        $('#TEL').val(json.FB_Clients[0].Tel)
+        $('#FAX').val(json.FB_Clients[0].Fax)
+        $('#EMAIL').val(json.FB_Clients[0].Email)
+
+        $('#TVAITRA').val(json.FB_Clients[0].TVA_Intra)
+        $('#EXPTYPENONSOUMISTVA').val(json.FB_Clients[0].EXP_TYPE_NONSOUMISTVA)
+
+        $('#COMPCOMPTABLE').val(json.FB_Clients[0].Comp_Comptable)
+
+        $('#STATUT').val(json.FB_Clients[0].Statut)
+        $('#TYPESOCIETE').val(json.FB_Clients[0].CodeCatalogue)
+        $('#CODEAPE').val(json.FB_Clients[0].CodeApe)
+        $('#NUMEROSIRET').val(json.FB_Clients[0].NumeroSiret)
+        $('#WEB').val(json.FB_Clients[0].Web)
+    }
+
+}

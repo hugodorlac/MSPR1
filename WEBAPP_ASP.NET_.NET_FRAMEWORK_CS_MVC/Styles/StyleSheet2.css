@@ -1,0 +1,21 @@
+﻿
+@import url('https://rsms.me/inter/inter-ui.css');
+
+body {
+    font-family: 'Inter UI', sans-serif;
+    background-image: url(~/assets/waves.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    border: 0 !important;
+    background-color: rgba(236, 236, 236, 0.5) !important;
+}
+
+.font {
+    font-size: 50px;
+    font-weight: 900;
+    color: rgb(90, 21, 136) !important;
+}

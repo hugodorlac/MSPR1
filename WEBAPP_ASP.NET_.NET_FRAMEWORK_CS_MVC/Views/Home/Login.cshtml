@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Login";
+
+    if (IsPost)
+    {
+        string codeabonne = Request.Form["codeabonne"];
+        string username = Request.Form["username"];
+        string password = Request.Form["password"];
+
+        WEBAPP_ASP.NET_.NET_FRAMEWORK_CS_MVC.Models.LoginModel login = new WEBAPP_ASP.NET_.NET_FRAMEWORK_CS_MVC.Models.LoginModel(codeabonne, username, password);
+        string authString = login.Authentification();
+        login.AddInSession(authString);
+
+        string jsonTab = login.idylisapi.LireTableJSON(login.sessionID, "FB_Clients", "CODECLIENT=04454", "DATECREATION ASC", "0");
+
+        <text>
+            You entered:
+            <br />
+            Code Abonne: @codeabonne / @login._codeabonne
+            <br />
+            Identifiant: @username / @login._username
+            <br />
+            Mot de Passe: @password / @login._password
+            <br />
+            Token: @authString
+            <hr />
+            JSON.strin(@jsonTab)
+        </text>
+
+    }
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<form method="post">
+    <fieldset>
+        <legend>Se Connecter</legend>
+        <div>
+            <label for="codeabonne">Code Abonne:</label>
+            <input type="text" name="codeabonne" value="" required />
+        </div>
+        <div>
+            <label for="username">Identifiant:</label>
+            <input type="text" name="username" value="" required />
+        </div>
+        <div>
+            <label for="password">Mot de Passe:</label>
+            <input type="password" name="password" value="" required />
+        </div>
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Connexion" class="submit" />
+        </div>
+    </fieldset>
+</form>
+
+
+
